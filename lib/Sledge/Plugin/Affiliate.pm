@@ -2,7 +2,7 @@ package Sledge::Plugin::Affiliate;
 use strict;
 use warnings;
 use base qw(Class::Accessor::Fast);
-our $VERSION = '0.03';
+our $VERSION = '0.04';
 use URI::Escape;
 
 our $TYPE_PARAM   = 'aff_type';

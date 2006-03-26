@@ -1,5 +1,8 @@
 Revision history for Perl extension Sledge::Plugin::Affiliate
 
+0.04  Mon Mar 27 01:17:09 JST 2006
+    - add Nihongo.pod
+
 0.03  Sun Mar 26 23:02:29 JST 2006
     - restructuring
 

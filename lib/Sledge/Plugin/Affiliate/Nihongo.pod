@@ -1,0 +1,86 @@
+=head1 NAME
+
+Sledge::Plugin::Affiliate - ケータイ向けアフィリエイトサイトを便利に使うプラグイン
+
+=head1 SYNOPSIS
+
+  package Your::Pages;
+  use Sledge::Plugin::Affiliate;
+  
+  sub dispatch_index {
+      my $self = shift;
+      $self->affiliate->get_from_request;
+  }
+
+  sub dispatch_do_regist {
+      my $self = shift;
+      $self->affiliate->send_notice;
+  }
+
+  # in your config.yaml
+  affiliate:
+    ua_opts:
+      agent: Sledge::Plugin::Affiliate/0.01
+      timeout: 60
+    sites:
+    - name: ktaf
+        param: ktaf
+        url: http://www.example.com/action-notice.cgi?a=Aj3KM3fa&u={UNIQUE_ID}&r={SESSION_ID}
+
+=head1 DESCRIPTION
+
+ケータイなアフィリエイトサイトとの連携をよきにはからってくれるモジュールです。
+
+=head1 METHODS
+
+=head2 new
+
+  Sledge::Plugin::Affiliate->new;
+
+新しいインスタンスを作ります
+
+=head2 set
+
+  $a->set('ktaf' => 'dsfau0JKLm');
+
+アフィリエイト情報をセッションにいれます。
+
+=head2 get
+
+  $a->get;
+
+セッションに入っているアフィリエイト情報を得ます。
+
+=head2 get_from_request
+
+  $a->get_from_request;
+
+リクエストからアフィリエイト情報をえて、セッションに格納します。
+
+=head2 send_notice
+
+  $a->send_notice;
+
+アフィリエイトサイトにリクエストを送信します。
+
+=head2 store_to_cache
+
+  $a->store_to_cache;
+
+セッション情報をキャッシュにコピーします。L<Sledge::Cache>, L<Sledge::Plugin::Cache> との連携が前提となっています。Sledge::Cache::Memcached との連携は空メが会員登録時に挟まる時などに便利です。
+
+=head2 load_from_cache
+
+  $a->load_from_cache;
+
+キャッシュからセッションにアフィリエイト関連情報を復帰させます。
+
+=head2 as_string
+
+  $a->as_string;
+
+アフィリエイト情報を文字列として吐き出します。データの送信漏れを防ぐために、この情報を DB に保存しておくことをオススメします。
+
+=head1 SEE ALSO
+
+L<Bundle::Sledge>, L<http://ktaf.jp/>
