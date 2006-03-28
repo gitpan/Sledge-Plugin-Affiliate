@@ -2,8 +2,9 @@ package Sledge::Plugin::Affiliate;
 use strict;
 use warnings;
 use base qw(Class::Accessor::Fast);
-our $VERSION = '0.04';
+our $VERSION = '0.05';
 use URI::Escape;
+use LWP::UserAgent;
 
 our $TYPE_PARAM   = 'aff_type';
 our $SESSION_KEY  = '_s_affiliate';
